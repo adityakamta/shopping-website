@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home Appliances Deals | OurDeals</title>
+
+    <link rel="stylesheet" href="appliances.css">
+</head>
+    <style>
+        /* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f6fb;
+    color: #20243a;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    min-height: 75px;
+    padding: 18px 7%;
+    background: #101329;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.logo span,
+footer h2 span {
+    color: #a78bfa;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.navbar nav a {
+    color: #d6d7e4;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: #a78bfa;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 370px;
+    padding: 70px 8%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(120deg, #171b3d, #39266d);
+    color: white;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.tagline {
+    color: #c4b5fd;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #c4b5fd;
+}
+
+.hero-content > p:not(.tagline) {
+    color: #dedcf0;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 13px 24px;
+    border-radius: 8px;
+    background: #a78bfa;
+    color: #17132b;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    background: #c4b5fd;
+    transform: translateY(-2px);
+}
+
+/* Categories */
+.categories {
+    padding: 50px 7% 25px;
+}
+
+.categories h2,
+.section-heading h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.categories h2 span,
+.section-heading h2 span {
+    color: #7950d8;
+}
+
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.category-list a {
+    padding: 16px 12px;
+    background: white;
+    border: 1px solid #e8e5f3;
+    border-radius: 10px;
+    text-align: center;
+    color: #30304b;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.category-list a:hover {
+    border-color: #a78bfa;
+    background: #f0eaff;
+    transform: translateY(-3px);
+}
+
+/* Search */
+.search-section {
+    padding: 25px 7% 10px;
+}
+
+.search-section input {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 15px 18px;
+    border: 1px solid #d9d6e8;
+    border-radius: 10px;
+    outline: none;
+    background: white;
+    font-size: 15px;
+}
+
+.search-section input:focus {
+    border-color: #7950d8;
+    box-shadow: 0 0 0 3px rgba(121, 80, 216, 0.12);
+}
+
+/* Products */
+.products-section {
+    padding: 40px 7% 65px;
+}
+
+.section-heading {
+    margin-bottom: 28px;
+}
+
+.section-heading p {
+    color: #77798b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.product-card {
+    min-width: 0;
+    padding: 22px 18px;
+    background: white;
+    border: 1px solid #e9e7f2;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(31, 25, 67, 0.04);
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: #c4b5fd;
+    box-shadow: 0 12px 28px rgba(63, 45, 112, 0.10);
+}
+
+.product-image {
+    height: 125px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f0eaff, #f7f4ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 58px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 10px;
+    margin-bottom: 12px;
+    border-radius: 20px;
+    background: #f0eaff;
+    color: #7045c6;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    overflow-wrap: anywhere;
+}
+
+.product-card p {
+    min-height: 44px;
+    color: #77798b;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.product-card > a {
+    display: block;
+    padding: 11px 8px;
+    border-radius: 7px;
+    background: #20183d;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.product-card > a:hover {
+    background: #7950d8;
+}
+
+#noResults {
+    display: none;
+    margin-top: 30px;
+    text-align: center;
+    color: #77798b;
+}
+
+/* Footer */
+footer {
+    padding: 35px 7%;
+    background: #101329;
+    color: #dedcf0;
+    text-align: center;
+}
+
+footer h2 {
+    color: white;
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+footer p {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.copyright {
+    margin-top: 15px;
+    color: #a6a7bb;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+    .navbar {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .category-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 18px 5%;
+    }
+
+    .navbar nav {
+        gap: 12px 16px;
+    }
+
+    .navbar nav a {
+        font-size: 12px;
+    }
+
+    .logo {
+        font-size: 26px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 55px 6%;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero-content > p:not(.tagline) {
+        font-size: 14px;
+    }
+
+    .categories {
+        padding: 35px 5% 15px;
+    }
+
+    .categories h2,
+    .section-heading h2 {
+        font-size: 24px;
+    }
+
+    .category-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .category-list a {
+        padding: 13px 8px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .search-section {
+        padding: 20px 5% 5px;
+    }
+
+    .search-section input {
+        font-size: 13px;
+    }
+
+    .products-section {
+        padding: 30px 5% 45px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .product-card {
+        padding: 12px;
+        border-radius: 11px;
+    }
+
+    .product-image {
+        height: 95px;
+        font-size: 43px;
+    }
+
+    .product-card h3 {
+        font-size: 15px;
+    }
+
+    .product-card p {
+        min-height: 60px;
+        font-size: 12px;
+    }
+
+    .product-card > a {
+        padding: 10px 5px;
+        font-size: 11px;
+    }
+
+    .badge {
+        font-size: 10px;
+    }
+
+    footer {
+        padding: 30px 5%;
+    }
+}
+
+/* Very Small Screens */
+@media (max-width: 350px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 120px;
+    }
+}
+    </style>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <a href="index.html" class="logo">Our<span>Deals</span></a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="fashion.html">Fashion</a>
+            <a href="eletronic.html">Electronics</a>
+            <a href="beauty.html">Beauty</a>
+            <a href="mobile.html">Mobiles</a>
+            <a href="appliances.html" class="active">Appliances</a>
+            <a href="toy.html">Toys</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="tagline">SMART HOME • SMART SAVINGS</p>
+
+            <h1>Best Deals on <span>Home Appliances</span></h1>
+
+            <p>
+                Upgrade your home with amazing deals on ACs,
+                refrigerators, washing machines and more.
+            </p>
+
+            <a href="#products" class="hero-btn">Explore Deals ↓</a>
+        </div>
+    </section>
+
+    <!-- Category Section -->
+    <section class="categories">
+        <h2>Shop by <span>Category</span></h2>
+
+        <div class="category-list">
+            <a href="#products">❄️ Air Conditioners</a>
+            <a href="#products">🧊 Refrigerators</a>
+            <a href="#products">🧺 Washing Machines</a>
+            <a href="#products">🍲 Microwave Ovens</a>
+            <a href="#products">🌬️ Air Coolers</a>
+            <a href="#products">🥤 Mixer Grinders</a>
+            <a href="#products">🚿 Geysers</a>
+            <a href="#products">🧹 Vacuum Cleaners</a>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search AC, refrigerator, mixer grinder..."
+            onkeyup="searchProducts()"
+        >
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+
+        <div class="section-heading">
+            <h2>Popular <span>Appliances</span></h2>
+            <p>Explore appliances from popular shopping websites.</p>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">❄️</div>
+                <span class="badge">Cooling</span>
+                <h3>Air Conditioners</h3>
+                <p>Split ACs and window ACs for your home.</p>
+                <a href="https://www.amazon.in/s?k=air+conditioner"
+                   target="_blank" rel="noopener noreferrer">Explore Deals ↗</a>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">🧊</div>
+                <span class="badge">Kitchen</span>
+                <h3>Refrigerators</h3>
+                <p>Single door, double door and smart refrigerators.</p>
+                <a href="https://www.flipkart.com/search?q=refrigerator"
+                   target="_blank" rel="noopener noreferrer">Explore Deals ↗</a>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">🧺</div>
+                <span class="badge">Laundry</span>
+                <h3>Washing Machines</h3>
+                <p>Top-load and front-load washing machines.</p>
+                <a href="https://www.amazon.in/s?k=washing+machine"
+                   target="_blank" rel="noopener noreferrer">Explore Deals ↗</a>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">🍲</div>
+                <span class="badge">Kitchen</span>
+                <h3>Microwave Ovens</h3>
+                <p>Microwave ovens for cooking and heating food.</p>
+                <a href="https://www.flipkart.com/search?q=microwave+oven"
+                   target="_blank" rel="noopener noreferrer">Explore Deals ↗</a>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image">🌬️</div>
+                <span class="badge">Summer Picks</span>
+                <h3>Air Coolers</h3>
+                <p>Room coolers for comfortable summer days.</p>
+                <a href="https://www.amazon.in/s?k=air+cooler"
+                   target="_blank" rel="noopener noreferrer">Explore Deals ↗</a>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-image">🥤</div>
+                <span class="badge">Kitchen</span>
+                <h3>Mixer Grinders</h3>
+                <p>Mixers, grinders and useful kitchen appliances.</p>
+                <a href="https://www.flipkart.com/search?q=mixer+grinder"
+                   target="_blank" rel="noopener noreferrer">Explore Deals ↗</a>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="product-image">🚿</div>
+                <span class="badge">Bathroom</span>
+                <h3>Water Geysers</h3>
+                <p>Instant and storage water heaters.</p>
+                <a href="https://www.amazon.in/s?k=water+geyser"
+                   target="_blank" rel="noopener noreferrer">Explore Deals ↗</a>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card">
+                <div class="product-image">🧹</div>
+                <span class="badge">Cleaning</span>
+                <h3>Vacuum Cleaners</h3>
+                <p>Keep your home clean with easy-to-use cleaners.</p>
+                <a href="https://www.flipkart.com/search?q=vacuum+cleaner"
+                   target="_blank" rel="noopener noreferrer">Explore Deals ↗</a>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="product-card">
+                <div class="product-image">🍞</div>
+                <span class="badge">Kitchen</span>
+                <h3>Toasters & Kettles</h3>
+                <p>Electric kettles, toasters and breakfast essentials.</p>
+                <a href="https://www.amazon.in/s?k=electric+kettle+toaster"
+                   target="_blank" rel="noopener noreferrer">Explore Deals ↗</a>
+            </div>
+
+            <!-- Product 10 -->
+            <div class="product-card">
+                <div class="product-image">💨</div>
+                <span class="badge">Home Care</span>
+                <h3>Room Heaters</h3>
+                <p>Heating appliances for colder days.</p>
+                <a href="https://www.flipkart.com/search?q=room+heater"
+                   target="_blank" rel="noopener noreferrer">Explore Deals ↗</a>
+            </div>
+
+            <!-- Product 11 -->
+            <div class="product-card">
+                <div class="product-image">💨</div>
+                <span class="badge">Air Care</span>
+                <h3>Air Purifiers</h3>
+                <p>Explore air purifiers for indoor spaces.</p>
+                <a href="https://www.amazon.in/s?k=air+purifier"
+                   target="_blank" rel="noopener noreferrer">Explore Deals ↗</a>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="product-card">
+                <div class="product-image">🪭</div>
+                <span class="badge">Everyday Use</span>
+                <h3>Fans</h3>
+                <p>Ceiling fans, table fans and pedestal fans.</p>
+                <a href="https://www.flipkart.com/search?q=electric+fan"
+                   target="_blank" rel="noopener noreferrer">Explore Deals ↗</a>
+            </div>
+
+        </div>
+
+        <p id="noResults">No matching appliances found.</p>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h2>Our<span>Deals</span></h2>
+        <p>Find useful products and explore deals in one place.</p>
+        <p class="copyright">© 2026 OurDeals. All rights reserved.</p>
+    </footer>
+
+    <!-- Search JavaScript -->
+    <script>
+        function searchProducts() {
+            let input = document
+                .getElementById("searchInput")
+                .value.toLowerCase();
+
+            let cards = document.querySelectorAll(".product-card");
+            let visibleCount = 0;
+
+            cards.forEach(function(card) {
+                let text = card.innerText.toLowerCase();
+
+                if (text.includes(input)) {
+                    card.style.display = "block";
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            document.getElementById("noResults").style.display =
+                visibleCount === 0 ? "block" : "none";
+        }
+    </script>
+
+</body>
+</html>
